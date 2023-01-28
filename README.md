@@ -4,18 +4,21 @@ This is a Minecraft plugin that allows players to set and reset their own tempor
 
 ## Usage
 
-Setting a Temporary Spawn Point
+Setting a Temporary Spawn Point:
 Players can set their own temporary spawn point by typing /tempspawn in-game.
 This will save the player's current location as their temporary spawn point, and set their bed spawn point to this location.
 If the player does not have a bed spawn point set, the plugin will save their original spawn point and set it when they reset their temporary spawn point.
-Resetting a Temporary Spawn Point
+
+Resetting a Temporary Spawn Point:
 Players can reset their own temporary spawn point by typing /resettempspawn in-game.
 This will set the player's bed spawn point back to their original spawn point.
-Setting a Temporary Spawn Point for another player
+
+Setting a Temporary Spawn Point for another player:
 Server administrators can set a temporary spawn point for another player by typing /setplayertempspawn [player] in-game.
 This will save the target player's current location as their temporary spawn point, and set their bed spawn point to this location.
 If the target player does not have a bed spawn point set, the plugin will save their original spawn point and set it when they reset their temporary spawn point.
-Resetting a Temporary Spawn Point for another player
+
+Resetting a Temporary Spawn Point for another player:
 Server administrators can reset a temporary spawn point for another player by typing /resetplayertempspawn [player] in-game.
 This will set the target player's bed spawn point back to their original spawn point.
 
