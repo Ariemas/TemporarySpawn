@@ -15,6 +15,7 @@ public class TemporarySpawnCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if sender has permission and whether they are a player
         if(!sender.hasPermission("temporaryspawn.tempspawn")) {
+            sender.sendMessage("You do not have permission to use this command");
             return true;
         } if (!(sender instanceof Player)) {
             return true;
