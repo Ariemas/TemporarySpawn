@@ -12,12 +12,12 @@ Players can reset their own temporary spawn point by typing /resettempspawn in-g
 This will set the player's bed spawn point back to their original spawn point.
 
 Setting a Temporary Spawn Point for another player:
-Server administrators can set a temporary spawn point for another player by typing /setplayertempspawn [player] in-game.
+Server administrators can set a temporary spawn point for another player by typing /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world] in-game.
 This will save the target player's current location as their temporary spawn point, and set their bed spawn point to this location.
 If the target player does not have a bed spawn point set, the plugin will save their original spawn point and set it when they reset their temporary spawn point.
 
 Resetting a Temporary Spawn Point for another player:
-Server administrators can reset a temporary spawn point for another player by typing /resetplayertempspawn [player] in-game.
+Server administrators can reset a temporary spawn point for another player by typing /resetplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world] in-game.
 This will set the target player's bed spawn point back to their original spawn point.
 
 ## Permissions
@@ -27,7 +27,7 @@ temporaryspawn.setplayertempspawn: Allows player to use the /setplayertempspawn 
 temporaryspawn.resetplayertempspawn: Allows player to use the /resetplayertempspawn command
 
 ## Notes
-If there are unspecified arguments it will automatically set them to the sender (only if the command is run by a player).
+If there are unspecified arguments it will automatically set them to the sender (only works if the command is run by a player).
 
 This plugin stores the player's temporary spawn point in the plugin's internal map, and sets the player's bed spawn point to this location.
 
