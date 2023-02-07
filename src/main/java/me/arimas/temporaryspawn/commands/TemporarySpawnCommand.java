@@ -18,6 +18,7 @@ public class TemporarySpawnCommand implements CommandExecutor {
             sender.sendMessage("You do not have permission to use this command");
             return true;
         } if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can use this command");
             return true;
         }
 
@@ -26,7 +27,7 @@ public class TemporarySpawnCommand implements CommandExecutor {
 
         // Get player UUID and Location
         UUID senderPlayerUUID = senderPlayer.getUniqueId();
-        Location temporarySpawnPoint = new Location(senderPlayer.getWorld(), senderPlayer.getLocation().getBlockX(), senderPlayer.getLocation().getBlockY(), senderPlayer.getLocation().getBlockZ());
+        Location temporarySpawnPoint = new Location(senderPlayer.getWorld(), senderPlayer.getLocation().getBlockX(), senderPlayer.getLocation().getBlockY(), senderPlayer.getLocation().getBlockZ(), senderPlayer.getLocation().getYaw(), senderPlayer.getLocation().getPitch());
 
         // Set original spawn point if they do not have one
         if (!TemporarySpawn.playerOriginalSpawnPoints.containsKey(senderPlayerUUID)) {
@@ -38,7 +39,7 @@ public class TemporarySpawnCommand implements CommandExecutor {
         senderPlayer.setBedSpawnLocation(temporarySpawnPoint, true);
 
         // Send message to player
-        senderPlayer.sendMessage("Temporary spawn point set to " + temporarySpawnPoint.toString());
+        sender.sendMessage("Temporary spawn point set to: " + temporarySpawnPoint.toString());
         return true;
     }
 

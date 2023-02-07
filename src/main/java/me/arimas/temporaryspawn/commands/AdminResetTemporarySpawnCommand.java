@@ -42,7 +42,7 @@ public class AdminResetTemporarySpawnCommand implements CommandExecutor {
                 Player senderPlayer = (Player) sender;
                 targetPlayers.add(senderPlayer);
             } else {
-                sender.sendMessage("Usage: /resetplayertempspawn <player(s)>");
+                sender.sendMessage("Usage: /resetplayertempspawn [player(s)]");
                 return true;
             }
         }
@@ -53,6 +53,7 @@ public class AdminResetTemporarySpawnCommand implements CommandExecutor {
             targetPlayer.setBedSpawnLocation(TemporarySpawn.playerOriginalSpawnPoints.get(targetPlayerUUID));
             TemporarySpawn.playerTemporarySpawnPoints.remove(targetPlayerUUID);
             TemporarySpawn.playerOriginalSpawnPoints.remove(targetPlayerUUID);
+            targetPlayer.sendMessage("Temporary spawn point reset to: " + targetPlayer.getBedSpawnLocation().toString());
         }
 
         sender.sendMessage("Temporary spawn points reset for specified players.");

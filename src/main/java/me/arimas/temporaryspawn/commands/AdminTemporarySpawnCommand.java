@@ -25,9 +25,8 @@ public class AdminTemporarySpawnCommand implements CommandExecutor {
 
         int argsIndex = args.length - 1;
 
-        // Get world
+        // Parse world
         World temporaryWorld;
-
         try {
             temporaryWorld = Bukkit.getWorld(args[argsIndex]);
             if (temporaryWorld == null) {
@@ -39,7 +38,24 @@ public class AdminTemporarySpawnCommand implements CommandExecutor {
                 Player senderPlayer = (Player) sender;
                 temporaryWorld = senderPlayer.getWorld();
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn <player(s)> <x> <y> <z> <world>");
+                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
+                return true;
+            }
+        }
+
+        // Parse pitch and yaw
+        float pitch, yaw;
+        try {
+            pitch = Float.parseFloat(args[(argsIndex - 1)]);
+            yaw = Float.parseFloat(args[(argsIndex)]);
+            argsIndex -= 2;
+        } catch (Exception exception) {
+            if (sender instanceof Player) {
+                Player senderPlayer = (Player) sender;
+                pitch = senderPlayer.getLocation().getPitch();
+                yaw = senderPlayer.getLocation().getYaw();
+            } else {
+                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
                 return true;
             }
         }
@@ -58,7 +74,7 @@ public class AdminTemporarySpawnCommand implements CommandExecutor {
                 y = senderPlayer.getLocation().getBlockY();
                 z = senderPlayer.getLocation().getBlockZ();
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn <player(s)> <x> <y> <z> <world>");
+                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
                 return true;
             }
         }
@@ -79,14 +95,14 @@ public class AdminTemporarySpawnCommand implements CommandExecutor {
                 Player senderPlayer = (Player) sender;
                 targetPlayers.add(senderPlayer);
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn <player(s)> <x> <y> <z> <world>");
+                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
             }
         }
 
         // Set player temporary spawn points
+        Location temporarySpawnPoint = new Location(temporaryWorld, x, y, z, yaw, pitch);
         for (Player targetPlayer : targetPlayers) {
             UUID targetPlayerUUID = targetPlayer.getUniqueId();
-            Location temporarySpawnPoint = new Location(temporaryWorld, x, y, z);
 
             // Set original spawn point if they do not have one
             if (!TemporarySpawn.playerOriginalSpawnPoints.containsKey(targetPlayerUUID)) {

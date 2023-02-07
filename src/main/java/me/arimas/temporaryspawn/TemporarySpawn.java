@@ -1,9 +1,6 @@
 package me.arimas.temporaryspawn;
 
-import me.arimas.temporaryspawn.commands.AdminResetTemporarySpawnCommand;
-import me.arimas.temporaryspawn.commands.AdminTemporarySpawnCommand;
-import me.arimas.temporaryspawn.commands.ResetTemporarySpawnCommand;
-import me.arimas.temporaryspawn.commands.TemporarySpawnCommand;
+import me.arimas.temporaryspawn.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -13,7 +10,7 @@ import java.util.*;
 
 public final class TemporarySpawn extends JavaPlugin {
 
-    //Map to store player spawn points
+    // Map to store player spawn points
     public static Map<UUID, Location> playerOriginalSpawnPoints = new HashMap<>();
     public static Map<UUID, Location> playerTemporarySpawnPoints = new HashMap<>();
 
