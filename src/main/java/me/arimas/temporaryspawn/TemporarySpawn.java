@@ -17,6 +17,8 @@ public final class TemporarySpawn extends JavaPlugin {
     @Override
     public void onEnable() {
         // Register commands
+        getCommand("silentsetplayertempspawn").setExecutor(new AdminSilentTemporarySpawnCommand());
+        getCommand("silentresetplayertempspawn").setExecutor(new AdminSilentResetTemporarySpawnCommand());
         getCommand("setplayertempspawn").setExecutor(new AdminTemporarySpawnCommand());
         getCommand("resetplayertempspawn").setExecutor(new AdminResetTemporarySpawnCommand());
         getCommand("tempspawn").setExecutor(new TemporarySpawnCommand());

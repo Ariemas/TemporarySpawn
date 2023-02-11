@@ -1,3 +1,5 @@
+// Same as AdminResetTemporarySpawnCommand.java, but without the message to the target player
+
 package me.arimas.temporaryspawn.commands;
 
 import me.arimas.temporaryspawn.TemporarySpawn;
@@ -13,12 +15,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-public class AdminTemporarySpawnCommand implements CommandExecutor {
-
+public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if sender has permission
-        if (!sender.hasPermission("temporaryspawn.setplayertempspawn")) {
+        if (!sender.hasPermission("temporaryspawn.silentsetplayertempspawn")) {
             sender.sendMessage("You do not have permission to use this command");
             return true;
         }
@@ -111,8 +112,6 @@ public class AdminTemporarySpawnCommand implements CommandExecutor {
 
             targetPlayer.setBedSpawnLocation(temporarySpawnPoint, true);
             TemporarySpawn.playerTemporarySpawnPoints.put(targetPlayerUUID, temporarySpawnPoint);
-            // Send message to target player
-            targetPlayer.sendMessage("Temporary spawn point set to: " + temporarySpawnPoint.toString());
         }
 
         // Send message to sender
