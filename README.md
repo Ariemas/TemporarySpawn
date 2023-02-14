@@ -1,4 +1,7 @@
-# TemporarySpawn (v1.3)
+### Plugin Link:
+spigotmc.org/resources/temporaryspawn.107661/
+
+# TemporarySpawn (v1.4)
 This is a Minecraft plugin that allows players to set and reset their own temporary spawn points, as well as allows server administrators to set and reset temporary spawn points for other players.
 
 ## Usage

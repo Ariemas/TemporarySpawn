@@ -37,7 +37,7 @@ public class ResetTemporarySpawnCommand implements CommandExecutor {
         TemporarySpawn.playerOriginalSpawnPoints.remove(targetPlayerUUID);
 
         // Send message to player
-        sender.sendMessage("Temporary spawn point reset to: " + senderPlayer.getBedSpawnLocation().toString());
+        sender.sendMessage("Temporary spawn point reset");
         return true;
     }
 
