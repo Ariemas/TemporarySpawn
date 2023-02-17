@@ -1,6 +1,7 @@
 package me.arimas.temporaryspawn.commands;
 
 import me.arimas.temporaryspawn.TemporarySpawn;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,10 +16,10 @@ public class TemporarySpawnCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if sender has permission and whether they are a player
         if(!sender.hasPermission("temporaryspawn.tempspawn")) {
-            sender.sendMessage("You do not have permission to use this command");
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
         } if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can use this command");
+            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
             return true;
         }
 
@@ -39,7 +40,7 @@ public class TemporarySpawnCommand implements CommandExecutor {
         senderPlayer.setBedSpawnLocation(temporarySpawnPoint, true);
 
         // Send message to player
-        sender.sendMessage("Temporary spawn point set to: " + temporarySpawnPoint.toString());
+        sender.sendMessage(ChatColor.GREEN + "Temporary spawn point set to (" + senderPlayer.getBedSpawnLocation().getBlockX()+", "+senderPlayer.getBedSpawnLocation().getBlockY()+", "+senderPlayer.getBedSpawnLocation().getBlockZ()+") in " + senderPlayer.getBedSpawnLocation().getWorld().getName());
         return true;
     }
 

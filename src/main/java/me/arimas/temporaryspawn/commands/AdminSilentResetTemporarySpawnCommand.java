@@ -4,6 +4,7 @@ package me.arimas.temporaryspawn.commands;
 
 import me.arimas.temporaryspawn.TemporarySpawn;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,7 +21,7 @@ public class AdminSilentResetTemporarySpawnCommand implements CommandExecutor {
 
         // Check if sender has permission
         if (!sender.hasPermission("temporaryspawn.silentresetplayertempspawn")) {
-            sender.sendMessage("You do not have permission to use this command.");
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
         }
 
@@ -30,12 +31,12 @@ public class AdminSilentResetTemporarySpawnCommand implements CommandExecutor {
             for (String arg : args) {
                 Player targetPlayer = Bukkit.getPlayer(arg);
                 if (targetPlayer == null) {
-                    sender.sendMessage("Player not found: " + arg);
+                    sender.sendMessage(ChatColor.YELLOW + "Player not found: " + arg);
                     continue;
                 }
                 if (!TemporarySpawn.playerOriginalSpawnPoints.containsKey(targetPlayer.getUniqueId()))
                 {
-                    sender.sendMessage("Player does not have a temporary spawn: " + arg);
+                    sender.sendMessage(ChatColor.YELLOW + "Player does not have a temporary spawn: " + arg);
                 }
                 targetPlayers.add(targetPlayer);
             }
@@ -44,7 +45,7 @@ public class AdminSilentResetTemporarySpawnCommand implements CommandExecutor {
                 Player senderPlayer = (Player) sender;
                 targetPlayers.add(senderPlayer);
             } else {
-                sender.sendMessage("Usage: /resetplayertempspawn [player(s)]");
+                sender.sendMessage(ChatColor.YELLOW + "Usage: /resetplayertempspawn [player(s)]");
                 return true;
             }
         }
@@ -58,7 +59,7 @@ public class AdminSilentResetTemporarySpawnCommand implements CommandExecutor {
         }
 
         // Send message to sender
-        sender.sendMessage("Temporary spawn points reset for specified players.");
+        sender.sendMessage(ChatColor.GREEN + "The temporary spawn points have been reset.");
         return true;
 
     }

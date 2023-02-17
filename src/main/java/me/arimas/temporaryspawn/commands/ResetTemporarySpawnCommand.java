@@ -1,6 +1,7 @@
 package me.arimas.temporaryspawn.commands;
 
 import me.arimas.temporaryspawn.TemporarySpawn;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,10 +15,10 @@ public class ResetTemporarySpawnCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if sender has permission and whether they are a player
         if(!sender.hasPermission("temporaryspawn.resettempspawn")) {
-            sender.sendMessage("You do not have permission to use this command");
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
         } if (!(sender instanceof Player)) {
-            sender.sendMessage("This command can only be used by players");
+            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
             return true;
         }
 
@@ -27,7 +28,7 @@ public class ResetTemporarySpawnCommand implements CommandExecutor {
 
         // Check if they have a temporary spawn
         if (!TemporarySpawn.playerOriginalSpawnPoints.containsKey(targetPlayerUUID)) {
-            sender.sendMessage("You do not have a temporary spawn point set");
+            sender.sendMessage(ChatColor.RED + "You do not have a temporary spawn point set!");
             return true;
         }
 
@@ -37,7 +38,7 @@ public class ResetTemporarySpawnCommand implements CommandExecutor {
         TemporarySpawn.playerOriginalSpawnPoints.remove(targetPlayerUUID);
 
         // Send message to player
-        sender.sendMessage("Temporary spawn point reset");
+        sender.sendMessage(ChatColor.GREEN + "Temporary spawn point reset.");
         return true;
     }
 

@@ -1,6 +1,6 @@
 name: TemporarySpawn
 main: me.arimas.temporaryspawn.TemporarySpawn
-version: 1.4
+version: 1.5
 author: Aremas
 api-version: 1.13
 description: Allows players to set and reset their own temporary spawn points, as well as letting admins set and reset other players temporary spawn points.

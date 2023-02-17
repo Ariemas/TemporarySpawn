@@ -4,6 +4,7 @@ package me.arimas.temporaryspawn.commands;
 
 import me.arimas.temporaryspawn.TemporarySpawn;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -20,7 +21,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if sender has permission
         if (!sender.hasPermission("temporaryspawn.silentsetplayertempspawn")) {
-            sender.sendMessage("You do not have permission to use this command");
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
         }
 
@@ -39,7 +40,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
                 Player senderPlayer = (Player) sender;
                 temporaryWorld = senderPlayer.getWorld();
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
+                sender.sendMessage(ChatColor.YELLOW + "Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
                 return true;
             }
         }
@@ -56,7 +57,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
                 pitch = senderPlayer.getLocation().getPitch();
                 yaw = senderPlayer.getLocation().getYaw();
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
+                sender.sendMessage(ChatColor.YELLOW + "Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
                 return true;
             }
         }
@@ -75,7 +76,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
                 y = senderPlayer.getLocation().getBlockY();
                 z = senderPlayer.getLocation().getBlockZ();
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
+                sender.sendMessage(ChatColor.YELLOW + "Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
                 return true;
             }
         }
@@ -86,7 +87,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
             for (int i = 0; i <= argsIndex; i++) {
                 Player targetPlayer = Bukkit.getPlayer(args[i]);
                 if (targetPlayer == null) {
-                    sender.sendMessage("Player not found: " + args[i]);
+                    sender.sendMessage(ChatColor.YELLOW + "Player not found: " + args[i]);
                     continue;
                 }
                 targetPlayers.add(targetPlayer);
@@ -96,7 +97,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
                 Player senderPlayer = (Player) sender;
                 targetPlayers.add(senderPlayer);
             } else {
-                sender.sendMessage("Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
+                sender.sendMessage(ChatColor.YELLOW + "Usage: /setplayertempspawn [player(s)] [x] [y] [z] [yaw] [pitch] [world]");
             }
         }
 
@@ -115,7 +116,7 @@ public class AdminSilentTemporarySpawnCommand implements CommandExecutor {
         }
 
         // Send message to sender
-        sender.sendMessage("Temporary spawn points set for specified players.");
+        sender.sendMessage(ChatColor.GREEN + "The temporary spawn points have been set.");
         return true;
     }
 
