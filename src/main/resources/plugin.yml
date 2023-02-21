@@ -1,6 +1,6 @@
 name: TemporarySpawn
 main: me.arimas.temporaryspawn.TemporarySpawn
-version: 1.5
+version: 1.6
 author: Aremas
 api-version: 1.13
 description: Allows players to set and reset their own temporary spawn points, as well as letting admins set and reset other players temporary spawn points.
@@ -35,3 +35,22 @@ commands:
     usage: "Usage: /<command>"
     permission: temporaryspawn.resettempspawn
     aliases: resetempspawn
+permissions:
+  temporaryspawn.silentsetplayertempspawn:
+    description: Allows players to set a temporary spawn point for other players without informing them.
+    default: op
+  temporaryspawn.silentresetplayertempspawn:
+    description: Allows players to reset the temporary spawn point of other players without informing them.
+    default: op
+  temporaryspawn.setplayertempspawn:
+    description: Allows players to set a temporary spawn point for other players.
+    default: op
+  temporaryspawn.resetplayertempspawn:
+    description: Allows players to reset the temporary spawn point of other players.
+    default: op
+  temporaryspawn.tempspawn:
+    description: Allows players to set a temporary spawn point for themselves.
+    default: true
+  temporaryspawn.resettempspawn:
+    description: Allows players to reset their own temporary spawn point.
+    default: true
