@@ -1,56 +1,31 @@
-name: TemporarySpawn
-main: me.arimas.temporaryspawn.TemporarySpawn
-version: 1.6
-author: Aremas
-api-version: 1.13
-description: Allows players to set and reset their own temporary spawn points, as well as letting admins set and reset other players temporary spawn points.
+name: TempSpawn
+version: '${project.version}'
+main: me.arimas.tempspawn.TempSpawn
+author: arimas
+description: A plugin that allows players to set and reset their own temporary spawn points, with commands for admins.
+
 commands:
-  silentsetplayertempspawn:
-    description: Set a temporary spawn point for a player without informing them.
-    usage: "Usage: /<command> [player(s)] [x] [y] [z] [yaw] [pitch] [world]"
-    permission: temporaryspawn.silentsetplayertempspawn
-    aliases: quietsetplayertempspawn
-  silentresetplayertempspawn:
-    description: Reset the temporary spawn point of a player without informing them.
-    usage: "Usage: /<command> [player(s)]"
-    permission: temporaryspawn.silentresetplayertempspawn
-    aliases: quietresetplayertempspawn
-  setplayertempspawn:
-    description: Set a temporary spawn point for a player.
-    usage: "Usage: /<command> [player(s)] [x] [y] [z] [yaw] [pitch] [world]"
-    permission: temporaryspawn.setplayertempspawn
-    aliases:
-      - settempspawn
-      - setempspawn
-  resetplayertempspawn:
-    description: Reset the temporary spawn point of a player.
-    usage: "Usage: /<command> [player(s)]"
-    permission: temporaryspawn.resetplayertempspawn
-  tempspawn:
-    description: Set a temporary spawn point for yourself at your location.
-    usage: "Usage: /<command>"
-    permission: temporaryspawn.tempspawn
+  settempspawn:
+    description: Set a temporary spawn point for yourself or another player.
+    usage: /<command> [player]
+    aliases: [sts]
+    permission: tempspawn.set
   resettempspawn:
-    description: Reset your temporary spawn point.
-    usage: "Usage: /<command>"
-    permission: temporaryspawn.resettempspawn
-    aliases: resetempspawn
+    description: Reset your temporary spawn point or that of another player.
+    usage: /<command> [player]
+    aliases: [rts]
+    permission: tempspawn.reset
+
 permissions:
-  temporaryspawn.silentsetplayertempspawn:
-    description: Allows players to set a temporary spawn point for other players without informing them.
-    default: op
-  temporaryspawn.silentresetplayertempspawn:
-    description: Allows players to reset the temporary spawn point of other players without informing them.
-    default: op
-  temporaryspawn.setplayertempspawn:
-    description: Allows players to set a temporary spawn point for other players.
-    default: op
-  temporaryspawn.resetplayertempspawn:
-    description: Allows players to reset the temporary spawn point of other players.
-    default: op
-  temporaryspawn.tempspawn:
-    description: Allows players to set a temporary spawn point for themselves.
+  tempspawn.set:
+    description: Permission to set your own temporary spawn point.
     default: true
-  temporaryspawn.resettempspawn:
-    description: Allows players to reset their own temporary spawn point.
+  tempspawn.adminset:
+    description: Permission to set another player's temporary spawn point.
+    default: op
+  tempspawn.reset:
+    description: Permission to reset your own temporary spawn point.
     default: true
+  tempspawn.adminreset:
+    description: Permission to reset another player's temporary spawn point.
+    default: op
