@@ -24,7 +24,7 @@ TemporarySpawn is a Minecraft plugin that allows players to set and reset tempor
 
 ## Installation
 
-1. Download the TempSpawn plugin JAR file.
+1. [Download the TempSpawn plugin JAR file.](https://www.spigotmc.org/resources/temporary-spawn.107661/)
 2. Place the JAR file in your server's plugins folder.
 3. Restart your server.
 
